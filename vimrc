@@ -168,6 +168,9 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all'}
 " Unmanaged plugin (manually installed and updated)
 Plug '~/my-prototype-plugin'
 
+" Add in the julia language for syntax highlighting
+Plug 'JuliaEditorSupport/julia-vim'
+
 " Initialize plugin system
 call plug#end()
 
