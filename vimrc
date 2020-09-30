@@ -28,7 +28,7 @@ set wildmenu
 " Show partial commands in the last line of the screen
 set showcmd
 
-" Highlight searches (use <C-L> to temporarily turn off highlighting; see the mapping of <C-L> below)
+" Highlight searches (use <C-M> to temporarily turn off highlighting; see the mapping of <C-M> below)
 set hlsearch
 
 " makes the search incremental
@@ -126,7 +126,7 @@ set tabstop=2
 map Y y$
 
 " Map <C-L> (redraw screen) to also turn off search highlighting until the next search
-nnoremap <C-L> :nohl<CR><C-L>
+nnoremap <C-M> :nohl<CR><C-L>
 
 "------------------------------------------------------------
 
