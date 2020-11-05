@@ -83,7 +83,7 @@ set visualbell
 " set t_vb=
 
 " Enable use of the mouse for all modes
-set mouse=a
+" set mouse=a
 
 " Set the command window height to 2 lines, to avoid many cases of having to
 " press <Enter> to continue"
@@ -132,47 +132,6 @@ nnoremap <C-M> :nohl<CR><C-L>
 
 colorscheme anderson
 
-" Specify a directory for plugins
-" - For Neovim: stdpath('data') . '/plugged'
-" - Avlid using standard Vim directory names like 'plugin'
-call plug#begin('~/.vim/plugged')
-
-" Make sure you use single quotes
-
-" Shorthand notation; fetches https://githum.com/hunegunn/vim-easy-align
-Plug 'junegunn/vim-easy-align'
-Plug 'sheerun/vim-polyglot'
-
-" Any valid git URL is allowed
-Plug 'https://github.com/junegunn/vim-github-dashboard.git'
-
-" Multiple Plug commands can be written in a single line using | separators
-Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
-
-" On-demand loading
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
-
-" Using a non-master branch
-Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
-
-" Using a tagged release; wildcard allowed (requires git 1.9.2 or above)
-Plug 'fatih/vim-go', { 'tag': '*' }
-
-"Plugin options
-Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
-
-" Plugin outside ~/.vim/plugged with post-update hook
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all'}
-
-" Unmanaged plugin (manually installed and updated)
-Plug '~/my-prototype-plugin'
-
-" Add in the julia language for syntax highlighting
-Plug 'JuliaEditorSupport/julia-vim'
-
-" Initialize plugin system
-call plug#end()
 
 
 " set spell check 
@@ -207,3 +166,60 @@ noremap <Right> <Nop>
 
 " create a command to wipe all registers
 command! WipeReg for i in range (34, 122) | silent! call setreg(nr2char(i), []) | endfor
+
+" Specify a directory for plugins
+" - For Neovim: stdpath('data') . '/plugged'
+" - Avlid using standard Vim directory names like 'plugin'
+
+call plug#begin('~/.vim/plugged')
+" Make sure you use single quotes
+
+" Shorthand notation; e.g. fetches https://github.com/hunegunn/vim-easy-align
+" Provides commands to automatically align text
+Plug 'junegunn/vim-easy-align'
+
+" Provides syntax highlighting for a variety of languages
+Plug 'sheerun/vim-polyglot'
+
+" Provides latex integration
+Plug 'lervag/vimtex'
+let g:tex_flavor='latex'
+let g:vimtex_view_method='zathura'
+let g:vimtex_quickfix_mode=0
+set conceallevel=1
+let g:tex_conceal='abdmg'
+
+" Any valid git URL is allowed
+
+" Provides ability to browse GitHub events in vim
+Plug 'https://github.com/junegunn/vim-github-dashboard.git'
+
+" Multiple Plug commands can be written in a single line using | separators
+" ultisnips provides snippet functionality and vim-snippets contains a repo
+" for snippets in various languages
+Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" On-demand loading
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
+
+" Using a non-master branch
+Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
+
+" Using a tagged release; wildcard allowed (requires git 1.9.2 or above)
+Plug 'fatih/vim-go', { 'tag': '*' }
+
+"Plugin options
+Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
+
+" Unmanaged plugin (manually installed and updated)
+"Plug '~/my-prototype-plugin'
+
+" Provides the julia language for syntax highlighting
+Plug 'JuliaEditorSupport/julia-vim'
+
+" Initialize plugin system
+call plug#end()
